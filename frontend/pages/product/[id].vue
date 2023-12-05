@@ -1,8 +1,11 @@
 <template>
-  <div class="product-detail" v-if="data">
+  <div class="product-detail">
     <CommonHeader />
     <ProductCatalog />
-    <div class="product-detail__display">
+    <div v-if="loading">
+      <q-spinner-comment color="deep-purple" />
+    </div>
+    <div class="product-detail__display" v-if="data">
       <ProductBreadcrumb />
       <div class="product-detail__wrapper">
         <div class="product-detail__image">
@@ -41,6 +44,9 @@
       <div class="product-detail__recomendation">
         <ProductDetailRecomendation />
       </div>
+    </div>
+    <div v-if="error">
+      <h5 style="text-align: center; margin-top: 5%">Data tidak ditemukan</h5>
     </div>
   </div>
 </template>
